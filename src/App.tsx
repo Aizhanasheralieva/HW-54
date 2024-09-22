@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useState} from "react";
+import "./App.css";
+import PlayField from "./Components/PlayField/PlayField.tsx";
 
-function App() {
-  const [count, setCount] = useState(0)
+const createItems = () => {
+  const items = Array(36).fill({hasItem: false, clicked: false});
+  const randomIndex = Math.floor(Math.random() * 36);
+  items[randomIndex] = {hasItem: true, clicked: false};
+  return items;
+};
+
+const App = () => {
+  const [items, setItems] = useState(createItems());
+  const [tries, setTries] = useState(0);
+  const [endOfGame, setEndOfGame] = useState(false);
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="App">
+      <h1>Game</h1>
+      <p>Tries: {tries}</p>
+      <PlayField items={items}/>
+    </div>
+  );
+};
 
-export default App
+export default App;
