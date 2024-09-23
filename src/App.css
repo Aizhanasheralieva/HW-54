@@ -40,3 +40,37 @@
 .read-the-docs {
   color: #888;
 }
+
+.App {
+  text-align: center;
+}
+
+.playing-field {
+  display: grid;
+  grid-template-columns: repeat(6, 50px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  border: 2px solid #333;
+}
+
+.cell.opened {
+  background-color: #f3f3f3;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
